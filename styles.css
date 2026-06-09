@@ -1,0 +1,343 @@
+:root {
+    --theme-color: #5a7fff;
+    --base-background: #040b16;
+    --surface-background: #081324;
+    --surface-elevated: #0d1d34;
+    --surface-border: #1a3156;
+    --text-primary: #d8e7ff;
+    --text-secondary: #9aafce;
+    --text-muted: #7387a8;
+    --accent-glow: rgba(90, 127, 255, 0.22);
+    --table-header-background: rgba(16, 37, 67, 0.85);
+    --table-row-background: rgba(8, 19, 36, 0.72);
+    --table-row-alt-background: rgba(13, 29, 52, 0.92);
+    --code-background: #0a1527;
+    --code-background-highlight: #0d1d34;
+    --code-inline-background: rgba(110, 118, 129, 0.18);
+    --code-inline-border: rgba(90, 127, 255, 0.22);
+    --code-inline-text: #c7dcff;
+    --code-block-border: rgba(90, 127, 255, 0.18);
+    --selection-background: rgba(90, 127, 255, 0.3);
+}
+
+html, body {
+    background: var(--surface-background);
+    color: var(--text-primary);
+}
+
+body {
+    overflow: hidden !important;
+}
+
+main {
+    z-index: 2;
+}
+
+.app-nav {
+    display: grid;
+    align-items: center;
+    margin: 0 !important;
+    height: 4rem;
+    border: none !important;
+    padding: 1rem !important;
+    justify-content: right;
+    line-height: unset !important;
+}
+
+.content {
+    margin-top: 4rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: var(--base-background);
+    scrollbar-gutter: stable;
+}
+
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: rgba(90, 127, 255, 0.4);
+    border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: rgba(90, 127, 255, 0.08);
+}
+
+.content:hover::-webkit-scrollbar-thumb {
+    background: rgba(90, 127, 255, 0.52);
+}
+
+.sidebar {
+    background: var(--surface-background);
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.sidebar-nav {
+    border: none !important;
+    border-radius: 0 !important;
+    line-height: unset !important;
+    height: 100%;
+    padding-bottom: 0 !important;
+}
+
+.sidebar-nav ul, .sidebar-nav li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sidebar-nav ul ul ul {
+    padding: 0 0 0 1rem !important;
+}
+
+.sidebar-nav ul ul ul {
+    display: none;
+}
+
+.sidebar-nav ul ul .active + ul {
+    display: block;
+}
+
+.sidebar-nav ul ul ul:has(.active) {
+    display: block;
+}
+
+.sidebar .active a, .app-nav a.active {
+    background: var(--surface-elevated);
+    border: none !important;
+    font-weight: normal !important;
+}
+
+.sidebar .active a {
+    border-right: 2px solid white !important;
+}
+
+.app-nav a {
+    margin: 0 !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.sidebar a {
+    margin: 0 !important;
+    padding: 0.25rem 0.5rem !important;
+}
+
+.sidebar-nav > ul {
+    display: grid;
+    grid-template-rows: 4rem minmax(0, 1fr);
+    height: 100%;
+    margin: 0 !important;
+}
+
+.sidebar-nav > ul > ul {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0.5rem !important;
+}
+
+.sidebar-nav > ul > ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-nav > ul > ul::-webkit-scrollbar-thumb {
+    background: rgba(90, 127, 255, 0.4);
+    border-radius: 4px;
+}
+
+.sidebar-nav > ul > ul::-webkit-scrollbar-track {
+    background: rgba(90, 127, 255, 0.08);
+}
+
+.sidebar-nav > ul > ul:hover::-webkit-scrollbar-thumb {
+    background: rgba(90, 127, 255, 0.52);
+}
+
+.sidebar a:hover, .app-nav a:hover {
+    background: var(--surface-elevated) !important;
+    text-decoration: none !important;
+}
+
+.sidebar-nav > ul > li:first-child {
+    display: grid;
+    height: 4rem;
+    align-items: center;
+    padding: 0.5rem !important;
+}
+
+.sidebar-nav > ul > li:first-child a {
+    font-size: larger;
+}
+
+.sidebar-toggle {
+    display: none;
+}
+
+.markdown-section {
+    max-width: unset !important;
+    margin: 1rem !important;
+    margin-bottom: 80vh !important;
+    padding: 0 !important;
+}
+
+.markdown-section table {
+    border-collapse: separate;
+    border-spacing: 0;
+    display: table !important;
+    width: 100%;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    border: 1px solid var(--surface-border);
+    border-radius: 0.75rem;
+    background: var(--table-row-background);
+}
+
+.markdown-section tr {
+    border-top: 1px solid var(--surface-border) !important;
+    background: var(--table-row-background);
+}
+
+.markdown-section tr:nth-child(2n) {
+    background: var(--table-row-alt-background) !important;
+}
+
+.markdown-section thead tr,
+.markdown-section thead tr:nth-child(2n) {
+    background: var(--table-header-background) !important;
+}
+
+.markdown-section th,
+.markdown-section td {
+    border: none;
+    border-top: 1px solid var(--surface-border);
+    padding: 0.7rem 0.9rem;
+    vertical-align: top;
+}
+
+.markdown-section thead th {
+    border-top: none;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.markdown-section tbody tr:first-child td {
+    border-top-color: rgba(0, 0, 0, 0);
+}
+
+.markdown-section :not(pre) > code {
+    border: 1px solid var(--code-inline-border);
+    border-radius: 0.4rem;
+    background: var(--code-inline-background);
+    color: var(--code-inline-text);
+    padding: 0.15em 0.4em;
+}
+
+.markdown-section pre {
+    overflow: hidden;
+    margin: 1.25rem 0;
+    padding: 2.35rem 1rem 0.85rem;
+    border: 1px solid var(--code-block-border);
+    border-radius: 0.9rem;
+    background: linear-gradient(180deg, var(--code-background-highlight), var(--code-background));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.markdown-section pre::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1.85rem;
+    border-bottom: 1px solid rgba(90, 127, 255, 0.14);
+    background: linear-gradient(180deg, rgba(16, 37, 67, 0.42), rgba(16, 37, 67, 0.08));
+}
+
+.markdown-section pre::after {
+    top: 0.45rem;
+    left: 0.85rem;
+    right: auto;
+    padding: 0;
+    color: var(--text-muted);
+    text-align: left;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.markdown-section pre > code {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.code-segment, .code-comment, .code-space {
+    display: block;
+    position: relative;
+    margin: 0 !important;
+    padding: 0 3.5rem 0 0.75rem !important;
+    border-left: 3px solid transparent !important;
+    line-height: unset !important;
+}
+
+.code-comment,
+.code-space {
+    padding-right: 0 !important;
+}
+
+.code-comment {
+    opacity: 0.82;
+}
+
+.code-segment:hover {
+    border-left-color: var(--theme-color) !important;
+    background: rgba(90, 127, 255, 0.08);
+}
+
+.copy-button {
+    display: none;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.5rem;
+    margin: 0 !important;
+    padding: 0.1rem 0.45rem !important;
+    outline: none !important;
+    color: var(--text-primary);
+    border: 1px solid var(--code-inline-border);
+    font-size: 0.68rem;
+    border-radius: 999px;
+    background: rgba(8, 19, 36, 0.92);
+    cursor: pointer;
+}
+
+.copy-button::after {
+    content: attr(data-label);
+}
+
+.full-copy-button {
+    display: inline;
+    top: 0.4rem;
+    right: 0.75rem;
+    z-index: 1;
+}
+
+.code-segment.copying,
+.markdown-section pre.copying {
+    background: var(--accent-glow) !important;
+}
+
+.code-segment:hover .copy-button {
+    display: inline;
+}
+
+.app-nav img,
+.sidebar-nav img,
+.content h1 img {
+  height: 1cap;
+  width: auto;
+  vertical-align: baseline;
+}
