@@ -2,6 +2,15 @@ var __init;
 __init();
 
 __init = function() {
+    function argsFromHash(hash) {
+        const index = hash.indexOf("?");
+        if (index >= 0) {
+            return new URLSearchParams(hash.slice(index + 1));
+        }
+
+        return new URLSearchParams();
+    }
+
     let timer;
     const list = [];
     function scrolling(_, delay = 300) {
@@ -47,8 +56,7 @@ __init = function() {
     }
 
     function scrollToPart() {
-        const hash = location.hash.replace(/.*\?/, "");
-        const args = new URLSearchParams(hash);
+        const args = argsFromHash(location.hash);
         const id = args.get("id") || "_top";
         const target = document.getElementById(id);
         const scroller = document.querySelector(".content");
@@ -250,18 +258,15 @@ __init = function() {
     }
 
     function fixLinks() {
-        const root = new URL(location.href);
-        root.hash = "";
-
+        const root = "" + new URL("./", location.href);
         for (const a of document.querySelectorAll("a")) {
             const url = new URL(a.href);
-            const hash = url.hash.replace(/.*\?/, "");
-            const args = new URLSearchParams(hash);
-            url.hash = "";
+            const args = argsFromHash(url.hash);
+            url.search = url.hash = "";
 
-            if (root.href === url.href) {
+            if (url.href.startsWith(root)) {
                 args.delete("id");
-                
+
                 if (args.size) {
                     a.href = "?" + args;
                 }
