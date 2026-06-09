@@ -36,6 +36,7 @@ jobs:
           mkdir -p _site
           git checkout-index -a -f --prefix=_site/
           rm -rf _site/.github
+          rm -rf _site/studio-base
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
