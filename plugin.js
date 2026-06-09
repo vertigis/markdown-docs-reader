@@ -266,6 +266,7 @@ __init = function() {
 
             if (url.href.startsWith(root)) {
                 args.delete("id");
+                a.target = "";
 
                 if (args.size) {
                     a.href = "?" + args;
