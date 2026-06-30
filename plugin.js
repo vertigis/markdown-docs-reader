@@ -78,7 +78,7 @@ __init = function() {
     addEventListener("hashchange", scrollToPart);
 
     if (location.hash === "") {
-        history.replaceState(null, null, "#/home/README.md");
+        history.replaceState(null, null, "#/home/README");
     }
 
     let cleanup;
