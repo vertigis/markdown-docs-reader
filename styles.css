@@ -1,32 +1,216 @@
+@import url("https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css") layer(vendor);
+
 :root {
-    --theme-color: #5a7fff;
-    --base-background: #040b16;
-    --surface-background: #081324;
-    --surface-elevated: #0d1d34;
-    --surface-border: #1a3156;
-    --text-primary: #d8e7ff;
-    --text-secondary: #9aafce;
-    --text-muted: #7387a8;
-    --accent-glow: rgba(90, 127, 255, 0.22);
-    --table-header-background: rgba(16, 37, 67, 0.85);
-    --table-row-background: rgba(8, 19, 36, 0.72);
-    --table-row-alt-background: rgba(13, 29, 52, 0.92);
-    --code-background: #0a1527;
-    --code-background-highlight: #0d1d34;
-    --code-inline-background: rgba(110, 118, 129, 0.18);
-    --code-inline-border: rgba(90, 127, 255, 0.22);
-    --code-inline-text: #c7dcff;
-    --code-block-border: rgba(90, 127, 255, 0.18);
-    --selection-background: rgba(90, 127, 255, 0.3);
+    /* Brand palette */
+    --blue-50: #e8f2f9;
+    --blue-100: #d1e5f2;
+    --blue-200: #a3cbe6;
+    --blue-300: #74b2d9;
+    --blue-400: #4698cd;
+    --blue-500: #1779ba;
+    --blue-600: #1671ad;
+    --blue-700: #13659a;
+    --blue-800: #115886;
+    --blue-900: #0e4c73;
+    --blue-a100: #0095f5;
+    --blue-a200: #008be7;
+    --blue-a400: #007fd3;
+    --blue-a700: #0074be;
+
+    --grey-50: #f9f9fc;
+    --grey-100: #f2f2f3;
+    --grey-200: #e9e9ea;
+    --grey-300: #dbdbde;
+    --grey-400: #c4c4c9;
+    --grey-500: #97979f;
+    --grey-600: #82828a;
+    --grey-700: #727279;
+    --grey-800: #515156;
+    --grey-900: #404044;
+    --grey-a100: #b2b2c1;
+    --grey-a200: #a6a6b3;
+    --grey-a400: #5a5a67;
+    --grey-a700: #44444f;
+
+    --green-50: #e7f3ec;
+    --green-100: #d0e7d9;
+    --green-200: #a1d0b4;
+    --green-300: #71b88e;
+    --green-400: #42a169;
+    --green-500: #128741;
+    --green-600: #117b3c;
+    --green-700: #0f6e36;
+    --green-800: #0d602f;
+    --green-900: #0b5228;
+    --green-a100: #00c04e;
+    --green-a200: #00ae46;
+    --green-a400: #009f41;
+    --green-a700: #00903b;
+
+    --woodland-green-50: #f2f6d7;
+    --woodland-green-100: #e0ecbe;
+    --woodland-green-200: #c0db7f;
+    --woodland-green-300: #a7c764;
+    --woodland-green-400: #92b250;
+    --woodland-green-500: #7d9d3d;
+    --woodland-green-600: #6f8f3c;
+    --woodland-green-700: #628339;
+    --woodland-green-800: #557736;
+    --woodland-green-900: #496a31;
+    --woodland-green-a100: #bcd681;
+    --woodland-green-a200: #a8d04b;
+    --woodland-green-a400: #7fc342;
+    --woodland-green-a700: #65b545;
+
+    --orange-50: #fdf4e9;
+    --orange-100: #faead3;
+    --orange-200: #f5d5a7;
+    --orange-300: #f1bf7b;
+    --orange-400: #ecaa4f;
+    --orange-500: #e79523;
+    --orange-600: #d08620;
+    --orange-700: #b9771c;
+    --orange-800: #a26819;
+    --orange-900: #8b5915;
+    --orange-a100: #ffad3c;
+    --orange-a200: #ff9e17;
+    --orange-a400: #fd9300;
+    --orange-a700: #e48400;
+
+    --purple-50: #f3eff7;
+    --purple-100: #e7e0ee;
+    --purple-200: #cec1dd;
+    --purple-300: #b6a1cd;
+    --purple-400: #9d82bc;
+    --purple-500: #8563ab;
+    --purple-600: #78599a;
+    --purple-700: #6a4f89;
+    --purple-800: #5d4578;
+    --purple-900: #503b67;
+    --purple-a100: #9451e1;
+    --purple-a200: #883ddd;
+    --purple-a400: #7d2ed2;
+    --purple-a700: #6d2abd;
+
+    --red-50: #fceeec;
+    --red-100: #f9dcd9;
+    --red-200: #f2b9b4;
+    --red-300: #ec978e;
+    --red-400: #e57469;
+    --red-500: #df5143;
+    --red-600: #c9493c;
+    --red-700: #b24136;
+    --red-800: #9c392f;
+    --red-900: #863128;
+    --red-a100: #f75c4c;
+    --red-a200: #f64937;
+    --red-a400: #e43f2e;
+    --red-a700: #cf3727;
+
+    --dark-red-50: #f8e8e7;
+    --dark-red-100: #ecc2be;
+    --dark-red-200: #e09e98;
+    --dark-red-300: #d47d75;
+    --dark-red-400: #c85f55;
+    --dark-red-500: #bc4438;
+    --dark-red-600: #a43b31;
+    --dark-red-700: #8d332a;
+    --dark-red-800: #752a23;
+    --dark-red-900: #5d221c;
+    --dark-red-a100: #ffcecc;
+    --dark-red-a200: #ff9e99;
+    --dark-red-a400: #ff6d66;
+    --dark-red-a700: #ff554c;
+
+    --teal-50: #e7f5f5;
+    --teal-100: #cfeaeb;
+    --teal-200: #9fd5d7;
+    --teal-300: #6fc1c3;
+    --teal-400: #3facaf;
+    --teal-500: #0f979b;
+    --teal-600: #0e888c;
+    --teal-700: #0c797c;
+    --teal-800: #0b6a6d;
+    --teal-900: #095b5d;
+    --teal-a100: #00c6cc;
+    --teal-a200: #00b5bb;
+    --teal-a400: #00a0a6;
+    --teal-a700: #00979b;
+
+    --burnt-orange-50: #fff1dc;
+    --burnt-orange-100: #fdd9c0;
+    --burnt-orange-200: #fbb582;
+    --burnt-orange-300: #f79354;
+    --burnt-orange-400: #f47c3d;
+    --burnt-orange-500: #de6728;
+    --burnt-orange-600: #d35527;
+    --burnt-orange-700: #c64527;
+    --burnt-orange-800: #ba3226;
+    --burnt-orange-900: #ac1f24;
+    --burnt-orange-a100: #d9a476;
+    --burnt-orange-a200: #d87c44;
+    --burnt-orange-a400: #db5f27;
+    --burnt-orange-a700: #d53a27;
+
+    --dark-burnt-orange-50: #f8e9e5;
+    --dark-burnt-orange-100: #f1c3b9;
+    --dark-burnt-orange-200: #e89b8a;
+    --dark-burnt-orange-300: #dc694e;
+    --dark-burnt-orange-400: #d75334;
+    --dark-burnt-orange-500: #c64527;
+    --dark-burnt-orange-600: #ac3c22;
+    --dark-burnt-orange-700: #93331d;
+    --dark-burnt-orange-800: #792a18;
+    --dark-burnt-orange-900: #602113;
+    --dark-burnt-orange-a100: #ffd7d3;
+    --dark-burnt-orange-a200: #fd9f89;
+    --dark-burnt-orange-a400: #eb5735;
+    --dark-burnt-orange-a700: #dc4c2a;
+
+    /* Dark surface ink used to derive deep backgrounds from the palette */
+    --ink: #030507;
+
+    /* Semantic theme tokens (derived from the palette above) */
+    --theme-color: var(--blue-400);
+    --base-background: color-mix(in srgb, var(--grey-900) 30%, var(--ink));
+    --surface-background: color-mix(in srgb, var(--grey-900) 45%, var(--ink));
+    --surface-elevated: color-mix(in srgb, var(--grey-900) 65%, var(--ink));
+    --surface-border: color-mix(in srgb, var(--grey-700) 55%, var(--ink));
+    --text-primary: var(--blue-50);
+    --text-secondary: var(--blue-200);
+    --text-muted: var(--grey-500);
+    --accent-glow: color-mix(in srgb, var(--theme-color) 22%, transparent);
+    --table-header-background: color-mix(in srgb, var(--grey-800) 55%, var(--ink));
+    --table-row-background: color-mix(in srgb, var(--grey-900) 40%, var(--ink));
+    --table-row-alt-background: color-mix(in srgb, var(--grey-900) 55%, var(--ink));
+    --code-background: color-mix(in srgb, var(--grey-900) 28%, var(--ink));
+    --code-background-highlight: color-mix(in srgb, var(--grey-900) 45%, var(--ink));
+    --code-inline-background: color-mix(in srgb, var(--grey-500) 18%, transparent);
+    --code-inline-border: color-mix(in srgb, var(--theme-color) 22%, transparent);
+    --code-inline-text: var(--blue-100);
+    --code-block-border: color-mix(in srgb, var(--theme-color) 18%, transparent);
+    --selection-background: color-mix(in srgb, var(--theme-color) 30%, transparent);
+
+    /* Derived accent overlays */
+    --scrollbar-thumb: color-mix(in srgb, var(--theme-color) 40%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--theme-color) 52%, transparent);
+    --scrollbar-track: color-mix(in srgb, var(--theme-color) 8%, transparent);
+    --accent-soft: color-mix(in srgb, var(--theme-color) 8%, transparent);
+    --accent-hairline: color-mix(in srgb, var(--theme-color) 14%, transparent);
 }
 
 html, body {
     background: var(--surface-background);
     color: var(--text-primary);
+    font-family: "Segoe UI", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
+}
+
+::selection {
+    background: var(--selection-background);
 }
 
 body {
-    overflow: hidden !important;
+    overflow: hidden;
 }
 
 main {
@@ -36,16 +220,17 @@ main {
 .app-nav {
     display: grid;
     align-items: center;
-    margin: 0 !important;
+    margin: 0;
     height: 4rem;
-    border: none !important;
-    padding: 1rem !important;
+    border: none;
+    padding: 1rem;
     justify-content: right;
-    line-height: unset !important;
+    line-height: unset;
 }
 
 .content {
     margin-top: 4rem;
+    padding-top: 0;
     overflow-y: scroll;
     overflow-x: hidden;
     background: var(--base-background);
@@ -57,39 +242,39 @@ main {
 }
 
 .content::-webkit-scrollbar-thumb {
-    background: rgba(90, 127, 255, 0.4);
+    background: var(--scrollbar-thumb);
     border-radius: 4px;
 }
 
 .content::-webkit-scrollbar-track {
-    background: rgba(90, 127, 255, 0.08);
+    background: var(--scrollbar-track);
 }
 
 .content:hover::-webkit-scrollbar-thumb {
-    background: rgba(90, 127, 255, 0.52);
+    background: var(--scrollbar-thumb-hover);
 }
 
 .sidebar {
     background: var(--surface-background);
-    padding: 0 !important;
+    padding: 0;
     overflow: hidden;
 }
 
 .sidebar-nav {
-    border: none !important;
-    border-radius: 0 !important;
-    line-height: unset !important;
+    border: none;
+    border-radius: 0;
+    line-height: unset;
     height: 100%;
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
 }
 
 .sidebar-nav ul, .sidebar-nav li {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
 }
 
 .sidebar-nav ul ul ul {
-    padding: 0 0 0 1rem !important;
+    padding: 0 0 0 1rem;
 }
 
 .sidebar-nav ul ul ul {
@@ -106,35 +291,37 @@ main {
 
 .sidebar .active a, .app-nav a.active {
     background: var(--surface-elevated);
-    border: none !important;
-    font-weight: normal !important;
+    border: none;
+    font-weight: normal;
+    color: var(--green-400);
 }
 
 .sidebar .active a {
-    border-right: 2px solid white !important;
+    border-right: 2px solid var(--green-400);
 }
 
 .app-nav a {
-    margin: 0 !important;
-    padding: 0.5rem 1rem !important;
+    margin: 0;
+    padding: 0.5rem 1rem;
 }
 
 .sidebar a {
-    margin: 0 !important;
-    padding: 0.25rem 0.5rem !important;
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
 }
 
 .sidebar-nav > ul {
     display: grid;
     grid-template-rows: 4rem minmax(0, 1fr);
     height: 100%;
-    margin: 0 !important;
+    margin: 0;
 }
 
 .sidebar-nav > ul > ul {
     min-height: 0;
     overflow-y: auto;
-    padding: 0.5rem !important;
+    padding: 0.5rem;
 }
 
 .sidebar-nav > ul > ul::-webkit-scrollbar {
@@ -142,28 +329,28 @@ main {
 }
 
 .sidebar-nav > ul > ul::-webkit-scrollbar-thumb {
-    background: rgba(90, 127, 255, 0.4);
+    background: var(--scrollbar-thumb);
     border-radius: 4px;
 }
 
 .sidebar-nav > ul > ul::-webkit-scrollbar-track {
-    background: rgba(90, 127, 255, 0.08);
+    background: var(--scrollbar-track);
 }
 
 .sidebar-nav > ul > ul:hover::-webkit-scrollbar-thumb {
-    background: rgba(90, 127, 255, 0.52);
+    background: var(--scrollbar-thumb-hover);
 }
 
 .sidebar a:hover, .app-nav a:hover {
-    background: var(--surface-elevated) !important;
-    text-decoration: none !important;
+    background: var(--surface-elevated);
+    text-decoration: none;
 }
 
 .sidebar-nav > ul > li:first-child {
     display: grid;
     height: 4rem;
     align-items: center;
-    padding: 0.5rem !important;
+    padding: 0.5rem;
 }
 
 .sidebar-nav > ul > li:first-child a {
@@ -175,36 +362,40 @@ main {
 }
 
 .markdown-section {
-    max-width: unset !important;
-    margin: 1rem !important;
-    margin-bottom: 80vh !important;
-    padding: 0 !important;
+    max-width: unset;
+    margin: 1.25rem;
+    margin-bottom: 80vh;
+    padding: 0;
+}
+
+.markdown-section h1 {
+    padding-top: 0.5rem;
 }
 
 .markdown-section table {
     border-collapse: separate;
     border-spacing: 0;
-    display: table !important;
+    display: table;
     width: 100%;
     margin: 1.5rem 0;
     overflow: hidden;
     border: 1px solid var(--surface-border);
-    border-radius: 0.75rem;
+    border-radius: 0.2rem;
     background: var(--table-row-background);
 }
 
 .markdown-section tr {
-    border-top: 1px solid var(--surface-border) !important;
+    border-top: 1px solid var(--surface-border);
     background: var(--table-row-background);
 }
 
 .markdown-section tr:nth-child(2n) {
-    background: var(--table-row-alt-background) !important;
+    background: var(--table-row-alt-background);
 }
 
 .markdown-section thead tr,
 .markdown-section thead tr:nth-child(2n) {
-    background: var(--table-header-background) !important;
+    background: var(--table-header-background);
 }
 
 .markdown-section th,
@@ -227,7 +418,7 @@ main {
 
 .markdown-section :not(pre) > code {
     border: 1px solid var(--code-inline-border);
-    border-radius: 0.4rem;
+    border-radius: 0.2rem;
     background: var(--code-inline-background);
     color: var(--code-inline-text);
     padding: 0.15em 0.4em;
@@ -238,7 +429,7 @@ main {
     margin: 1.25rem 0;
     padding: 2.35rem 1rem 0.85rem;
     border: 1px solid var(--code-block-border);
-    border-radius: 0.9rem;
+    border-radius: 0.2rem;
     background: linear-gradient(180deg, var(--code-background-highlight), var(--code-background));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
@@ -250,8 +441,8 @@ main {
     right: 0;
     left: 0;
     height: 1.85rem;
-    border-bottom: 1px solid rgba(90, 127, 255, 0.14);
-    background: linear-gradient(180deg, rgba(16, 37, 67, 0.42), rgba(16, 37, 67, 0.08));
+    border-bottom: 1px solid var(--accent-hairline);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--grey-800) 42%, transparent), color-mix(in srgb, var(--grey-800) 8%, transparent));
 }
 
 .markdown-section pre::after {
@@ -263,9 +454,13 @@ main {
     text-align: left;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
 .markdown-section pre > code {
+    display: block;
+    overflow-x: auto;
     margin: 0;
     padding: 0;
     border: none;
@@ -278,15 +473,16 @@ main {
 .code-segment, .code-comment, .code-space {
     display: block;
     position: relative;
-    margin: 0 !important;
-    padding: 0 3.5rem 0 0.75rem !important;
-    border-left: 3px solid transparent !important;
-    line-height: unset !important;
+    margin: 0;
+    padding: 0 3.5rem 0 0.75rem;
+    border-left: 3px solid transparent;
+    line-height: unset;
+    color: var(--grey-500);
 }
 
 .code-comment,
 .code-space {
-    padding-right: 0 !important;
+    padding-right: 0;
 }
 
 .code-comment {
@@ -294,8 +490,8 @@ main {
 }
 
 .code-segment:hover {
-    border-left-color: var(--theme-color) !important;
-    background: rgba(90, 127, 255, 0.08);
+    border-left-color: var(--theme-color);
+    background: var(--accent-soft);
 }
 
 .copy-button {
@@ -303,14 +499,14 @@ main {
     position: absolute;
     top: 0.1rem;
     right: 0.5rem;
-    margin: 0 !important;
-    padding: 0.1rem 0.45rem !important;
-    outline: none !important;
+    margin: 0;
+    padding: 0.1rem 0.45rem;
+    outline: none;
     color: var(--text-primary);
     border: 1px solid var(--code-inline-border);
     font-size: 0.68rem;
     border-radius: 999px;
-    background: rgba(8, 19, 36, 0.92);
+    background: color-mix(in srgb, var(--surface-background) 92%, transparent);
     cursor: pointer;
 }
 
@@ -320,14 +516,23 @@ main {
 
 .full-copy-button {
     display: inline;
-    top: 0.4rem;
+    top: 0.2rem;
     right: 0.75rem;
     z-index: 1;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+    text-transform: capitalize;
+}
+
+.full-copy-button:hover {
+    border-color: var(--theme-color);
+    background: var(--accent-soft);
 }
 
 .code-segment.copying,
 .markdown-section pre.copying {
-    background: var(--accent-glow) !important;
+    background: var(--accent-glow);
 }
 
 .code-segment:hover .copy-button {
@@ -340,4 +545,114 @@ main {
   height: 1cap;
   width: auto;
   vertical-align: baseline;
+}
+
+/* Mobile QOL */
+@media (max-width: 768px) {
+    /* Reserved corner for the hamburger toggle */
+    :root {
+        --mobile-toggle-size: 3.5rem;
+    }
+
+    /* Restore natural document scrolling on small screens */
+    html, body {
+        height: auto;
+        overflow: visible;
+    }
+
+    /*
+     * Drop Docsify's `z-index: 2`, which turns <main> into a stacking
+     * context and traps the fixed hamburger beneath the sticky nav bar.
+     * Without it, the toggle (z-index 60) sits above the nav (z-index 50).
+     */
+    main {
+        height: auto;
+        z-index: auto;
+    }
+
+    /*
+     * Sticky top bar: flows in the document so content sits naturally
+     * below it, then pins to the top while scrolling so the top-level
+     * menu is always visible and can never be scrolled away. Links wrap
+     * onto a second row instead of hiding, so none are ever cut off.
+     */
+    .app-nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        display: block;
+        height: auto;
+        margin: 0;
+        padding: 0.6rem 1rem 0.6rem var(--mobile-toggle-size);
+        line-height: 2;
+        background: var(--surface-background);
+        border-bottom: 1px solid var(--surface-border);
+    }
+
+    .app-nav p {
+        margin: 0;
+    }
+
+    /* Content flows naturally beneath the sticky bar */
+    .content {
+        position: static;
+        height: auto;
+        margin-top: 0;
+        overflow: visible;
+        transform: none;
+    }
+
+    /* Neutralise Docsify's push-drawer transform so the drawer overlays */
+    body.close .content {
+        transform: none;
+    }
+
+    /*
+     * Anchor scrolling (the plugin syncs the URL to the nearest heading)
+     * lands headings below the sticky bar instead of hidden beneath it.
+     */
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3 {
+        scroll-margin-top: 5rem;
+    }
+
+    /* Off-canvas sidebar drawer */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 300px;
+        max-width: 85vw;
+        z-index: 55;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+    }
+
+    body.close .sidebar {
+        transform: translateX(0);
+    }
+
+    /* Push the drawer contents below the hamburger icon */
+    .sidebar > .sidebar-nav,
+    .sidebar > .app-name {
+        margin-top: var(--mobile-toggle-size);
+    }
+
+    /* Hamburger toggle, pinned to the viewport top-left above every layer */
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--mobile-toggle-size);
+        height: var(--mobile-toggle-size);
+        padding: 0;
+        background: transparent;
+        z-index: 60;
+    }
 }
